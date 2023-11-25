@@ -5,7 +5,7 @@ import StartShipment from './StartShipment';
 import Footer from './Footer';
 import GetShipment from './GetShipment';
 import Home from './Home';
-import Navbar from './NavBar';
+import Navbar from './Navbar';
 import Table from './Table';
 import TrackingLogs from './TrackingLogs';
 import VerifyProduct from './VerifyProduct';
