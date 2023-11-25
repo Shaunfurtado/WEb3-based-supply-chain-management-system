@@ -4,12 +4,19 @@ import QrReader from "react-qr-scanner";
 const GetShipment = ({ getShipment }) => {
   const [index, setIndex] = useState(0);
   const [singleShipmentData, setSingleShipmentData] = useState();
+  const [inputValue, setInputValue] = useState("");
 
   const handleScan = (data) => {
     if (data) {
       console.log("Result of scan: ", data);
-      setIndex(data);
-      getShipmentData(); // Trigger the function to get shipment data
+      const numData = parseInt(data.text, 10);
+      if (!isNaN(numData) && numData !== 0) {
+        setIndex(numData);
+        setInputValue(numData.toString());
+        getShipmentData();
+      } else {
+        console.error("Scanned data is not a valid number: ", data.text);
+      }
     }
   };
 
@@ -53,7 +60,9 @@ const GetShipment = ({ getShipment }) => {
                         type="number"
                         placeholder="Enter Id"
                         className="input input-bordered join-item"
-                        onChange={(e) => setIndex(e.target.value)}
+                        // onChange={(e) => setIndex(e.target.value)}
+                        value={inputValue}
+                        onChange={(e) => setInputValue(e.target.value)}
                       />
                     </div>
                     <div
