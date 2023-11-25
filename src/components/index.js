@@ -5,7 +5,7 @@ import StartShipment from './StartShipment';
 import Footer from './Footer';
 import GetShipment from './GetShipment';
 import Home from './Home';
-import NavBar from './NavBar';
+import Navbar from './NavBar';
 import Table from './Table';
 import TrackingLogs from './TrackingLogs';
 import VerifyProduct from './VerifyProduct';
@@ -19,7 +19,7 @@ export {
     Footer,
     GetShipment,
     Home,
-    NavBar,
+    Navbar,
     Table,
     TrackingLogs,
     StartShipment,
