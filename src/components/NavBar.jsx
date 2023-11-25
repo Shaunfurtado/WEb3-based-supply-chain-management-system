@@ -46,7 +46,7 @@ const Navbar = () => {
                 <Link to="/get-shipment">Get Shipment</Link>
               </li>
               <li>
-                <Link to="/table">Tracking Logs</Link>
+                <Link to="/table">Tracking Log</Link>
               </li>
               <li>
                 <Link to="/verify-product">Verify Product</Link>
