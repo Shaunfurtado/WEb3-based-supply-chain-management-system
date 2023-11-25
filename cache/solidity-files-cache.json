@@ -1,8 +1,13 @@
 {
   "_format": "hh-sol-cache-2",
   "files": {
+<<<<<<< HEAD
     "C:\\Apps\\codes\\supply_chain_dapp\\contracts\\Tracking.sol": {
       "lastModificationDate": 1700764103228,
+=======
+    "C:\\Users\\ASUS\\Desktop\\testt\\supply_chain_dapp\\contracts\\Tracking.sol": {
+      "lastModificationDate": 1700901899222,
+>>>>>>> e325abd44dda34c2c2643473bff683a09a6f2c60
       "contentHash": "663792fb3f6857119f0c02193286b9c9",
       "sourceName": "contracts/Tracking.sol",
       "solcConfig": {
