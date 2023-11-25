@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import { NavBar, Footer, Home, Table, CreateShipment, StartShipment, CompleteShipment, TrackingLogs, VerifyProduct, Shipments, GetShipment } from './components/index';
+import { Navbar, Footer, Home, Table, CreateShipment, StartShipment, CompleteShipment, TrackingLogs, VerifyProduct, Shipments, GetShipment } from './components/index';
 
 // Internal import
 import { TrackingProvider, createShipment, startShipment, completeShipment, getAllShipment, getShipment} from './components/Context/TrackingContext';
@@ -21,7 +21,7 @@ export default function App() {
   return (
     <Router>
       <TrackingProvider>
-        <NavBar />
+        <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/table" element={<Table allShipmentsData={shipmentData} />} />
