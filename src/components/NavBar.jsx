@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { TrackingContext } from "./Context/TrackingContext";
 
-const Navbar = () => {
+const NavBar = () => {
   const { currentUser, connectWallet, getShipmentsCount } =
     useContext(TrackingContext);
   const [count, setCount] = useState();
@@ -107,4 +107,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export default NavBar;
