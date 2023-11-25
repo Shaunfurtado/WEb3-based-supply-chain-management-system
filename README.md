@@ -1,6 +1,20 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+npx create-next-app 
+cd myApp
+npm i -S next@13.1.1
+
+
+(node 16.0.0 required)
+npm install --save-dev hardhat@2.23.0
+npx hardhat init
+npm i @nomicfoundation/hardhat-toolbox@2
+npx hardhat node
+npx hardhat run --network localhost scripts/deploy.js    
+
+npm i ethers@5.7.2
+
+npm i web3modal@1.9.12
 
 ## Available Scripts
 
