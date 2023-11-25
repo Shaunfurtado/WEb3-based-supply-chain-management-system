@@ -4,6 +4,7 @@ import QrReader from "react-qr-scanner";
 const GetShipment = ({ getShipment }) => {
   const [index, setIndex] = useState(0);
   const [singleShipmentData, setSingleShipmentData] = useState();
+  const [isScanning, setIsScanning] = useState(false);
 
   const getShipmentData = async () => {
     try {
@@ -33,14 +34,21 @@ const GetShipment = ({ getShipment }) => {
   const handleScan = (data) => {
     if (data) {
       console.log("Result of scan: ", data);
-      const numData = parseInt(data.text, 10);
-      if (!isNaN(numData)) {
-        setIndex(numData);
-        getShipmentData();
+      const scannedData = data.text;
+      if (scannedData.length > 42) {
+        const remainingData = scannedData.substring(42);
+        const numData = parseInt(remainingData, 10);
+        if (!isNaN(numData)) {
+          setIndex(numData);
+          setIsScanning(false);
+          getShipmentData();
+        } else {
+          console.error("Scanned data is not a valid number: ", remainingData);
+        }
       } else {
         console.error(
-          "Scanned data is not a valid number or is zero: ",
-          data.text
+          "Scanned data does not contain enough characters: ",
+          scannedData
         );
       }
     }
@@ -48,6 +56,10 @@ const GetShipment = ({ getShipment }) => {
 
   const handleError = (err) => {
     console.error(err);
+  };
+
+  const toggleScanner = () => {
+    setIsScanning((prev) => !prev);
   };
 
   return (
@@ -72,7 +84,7 @@ const GetShipment = ({ getShipment }) => {
                       onClick={() => getShipmentData()}
                       className="card-actions justify-end"
                     >
-                      <button className="btn join-item rounded btn-primary ">
+                      <button className="btn join-item rounded btn-primary">
                         Get Data
                       </button>
                     </div>
@@ -83,27 +95,33 @@ const GetShipment = ({ getShipment }) => {
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">Scan QR Code</h2>
-                  <label htmlFor="my_modal_7" className="btn">
-                    Scan
+                  <label
+                    htmlFor="my_modal_7"
+                    className="btn"
+                    onClick={toggleScanner}
+                  >
+                    {isScanning ? "Stop Scan" : "Start Scan"}
                   </label>
                   <input
                     type="checkbox"
                     id="my_modal_7"
                     className="modal-toggle"
                   />
-                  <div className="modal" role="dialog">
-                    <div className="modal-box">
-                      <QrReader
-                        delay={300}
-                        onError={handleError}
-                        onScan={handleScan}
-                        style={{ width: "100%" }}
-                      />
+                  {isScanning && (
+                    <div className="modal" role="dialog">
+                      <div className="modal-box">
+                        <QrReader
+                          delay={300}
+                          onError={handleError}
+                          onScan={handleScan}
+                          style={{ width: "100%" }}
+                        />
+                      </div>
+                      <label className="modal-backdrop" htmlFor="my_modal_7">
+                        Close
+                      </label>
                     </div>
-                    <label className="modal-backdrop" htmlFor="my_modal_7">
-                      Close
-                    </label>
-                  </div>
+                  )}
                 </div>
               </form>
             </div>
