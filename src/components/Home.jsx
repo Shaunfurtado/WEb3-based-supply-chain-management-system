@@ -7,11 +7,9 @@ const Home = () => {
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
         <div className="max-w-md">
-          <h1 className="text-5xl font-bold">Decentralized Supply Chain</h1>
+          <h1 className="text-5xl font-bold">Chain Flow</h1>
           <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
+          Streamline your supply chain with ChainFlow, a decentralized app providing transparency, automation, and traceability for efficient and secure end-to-end operations.
           </p>
           <label htmlFor="my_modal_7" className="btn btn-primary">
             Get Started
@@ -31,28 +29,28 @@ const Home = () => {
           <Link to="/create-shipment">
             <Card
               title="Create Shipment"
-              description="Description for Card 1"
+              description="Create your Shipment"
               buttonText="Go to Create Shipment"
             />
           </Link>
           <Link to="/start-shipment">
             <Card
               title="Start Shipment"
-              description="Description for Card 2"
+              description="Start shipment for the created shipments"
               buttonText="Go to Start Shipment"
             />
           </Link>
           <Link to="/complete-shipment">
             <Card
               title="Complete Shipment"
-              description="Description for Card 3"
+              description="Complete the Shipments"
               buttonText="Go to Complete Shipment"
             />
           </Link>
           <Link to="/verify-product">
             <Card
               title="Verify Product"
-              description="Description for Card 4"
+              description="Verify the products using QR codes"
               buttonText="Go to Product Verification"
             />
           </Link>

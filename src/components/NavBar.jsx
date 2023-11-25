@@ -54,7 +54,7 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="btn btn-ghost text-xl" href="/">
-            Supply Chain
+            Chain Flow
           </a>
         </div>
         <div className="navbar-center hidden lg:flex">
