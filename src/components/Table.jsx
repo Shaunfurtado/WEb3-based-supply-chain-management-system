@@ -75,7 +75,7 @@ const Table = ({ allShipmentsData }) => {
                   />
                   <div className="modal" role="dialog">
                     <div className="modal-box w-3/12 max-w-1xl flex justify-center items-center">
-                      <QRCode value={`${idx}`} />
+                      <QRCode value={`${shipment.recipient}${idx}`} />
                     </div>
                     <label
                       className="modal-backdrop"

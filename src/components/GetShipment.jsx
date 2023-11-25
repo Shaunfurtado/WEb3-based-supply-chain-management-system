@@ -4,31 +4,16 @@ import QrReader from "react-qr-scanner";
 const GetShipment = ({ getShipment }) => {
   const [index, setIndex] = useState(0);
   const [singleShipmentData, setSingleShipmentData] = useState();
-  const [inputValue, setInputValue] = useState("");
-
-  const handleScan = (data) => {
-    if (data) {
-      console.log("Result of scan: ", data);
-      const numData = parseInt(data.text, 10);
-      if (!isNaN(numData) && numData !== 0) {
-        setIndex(numData);
-        setInputValue(numData.toString());
-        getShipmentData();
-      } else {
-        console.error("Scanned data is not a valid number: ", data.text);
-      }
-    }
-  };
-
-  const handleError = (err) => {
-    console.error(err);
-  };
 
   const getShipmentData = async () => {
     try {
-      const getData = await getShipment(index);
-      setSingleShipmentData(getData);
-      console.log(getData);
+      if (!isNaN(index)) {
+        const getData = await getShipment(index);
+        setSingleShipmentData(getData);
+        console.log(getData);
+      } else {
+        console.error("Manual input is not a valid number: ", index);
+      }
     } catch (error) {
       console.error("Error getting shipment data:", error);
     }
@@ -45,7 +30,27 @@ const GetShipment = ({ getShipment }) => {
     return dataTime;
   };
 
-  return GetShipment ? (
+  const handleScan = (data) => {
+    if (data) {
+      console.log("Result of scan: ", data);
+      const numData = parseInt(data.text, 10);
+      if (!isNaN(numData)) {
+        setIndex(numData);
+        getShipmentData();
+      } else {
+        console.error(
+          "Scanned data is not a valid number or is zero: ",
+          data.text
+        );
+      }
+    }
+  };
+
+  const handleError = (err) => {
+    console.error(err);
+  };
+
+  return (
     <div className="hero min-h-screen bg-base-200">
       <div className="hero-content text-center">
         <div className="flex justify-center items-center min-h-screen">
@@ -60,9 +65,7 @@ const GetShipment = ({ getShipment }) => {
                         type="number"
                         placeholder="Enter Id"
                         className="input input-bordered join-item"
-                        // onChange={(e) => setIndex(e.target.value)}
-                        value={inputValue}
-                        onChange={(e) => setInputValue(e.target.value)}
+                        onChange={(e) => setIndex(e.target.value)}
                       />
                     </div>
                     <div
@@ -76,7 +79,7 @@ const GetShipment = ({ getShipment }) => {
                   </div>
                 </div>
               </form>
-              <div class="divider">OR</div>
+              <div className="divider">OR</div>
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">Scan QR Code</h2>
@@ -175,8 +178,6 @@ const GetShipment = ({ getShipment }) => {
         </div>
       </div>
     </div>
-  ) : (
-    ""
   );
 };
 
