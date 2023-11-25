@@ -21,7 +21,7 @@ export default function App() {
   return (
     <Router>
       <TrackingProvider>
-        <Navbar />
+        <Navbar/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/table" element={<Table allShipmentsData={shipmentData} />} />

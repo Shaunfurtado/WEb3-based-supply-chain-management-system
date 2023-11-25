@@ -1,8 +1,21 @@
 import React, { useState } from "react";
+import QrReader from "react-qr-scanner";
 
 const GetShipment = ({ getShipment }) => {
   const [index, setIndex] = useState(0);
   const [singleShipmentData, setSingleShipmentData] = useState();
+
+  const handleScan = (data) => {
+    if (data) {
+      console.log("Result of scan: ", data);
+      setIndex(data);
+      getShipmentData(); // Trigger the function to get shipment data
+    }
+  };
+
+  const handleError = (err) => {
+    console.error(err);
+  };
 
   const getShipmentData = async () => {
     try {
@@ -58,24 +71,6 @@ const GetShipment = ({ getShipment }) => {
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="card-body items-center text-center">
                   <h2 className="card-title">Scan QR Code</h2>
-                  <div className="join">
-                    <div className="form-control">
-                      <input
-                        type="number"
-                        placeholder="Enter Id"
-                        className="input input-bordered join-item"
-                        onChange={(e) => setIndex(e.target.value)}
-                      />
-                    </div>
-                    <div
-                      onClick={() => getShipmentData()}
-                      className="card-actions justify-end"
-                    >
-                      <button className="btn join-item rounded btn-primary ">
-                        Get Data
-                      </button>
-                    </div>
-                  </div>
                   <label htmlFor="my_modal_7" className="btn">
                     Scan
                   </label>
@@ -86,10 +81,12 @@ const GetShipment = ({ getShipment }) => {
                   />
                   <div className="modal" role="dialog">
                     <div className="modal-box">
-                      <h3 className="text-lg font-bold">Scanning</h3>
-                      <p className="py-4">
-                        This modal works with a hidden checkbox!
-                      </p>
+                      <QrReader
+                        delay={300}
+                        onError={handleError}
+                        onScan={handleScan}
+                        style={{ width: "100%" }}
+                      />
                     </div>
                     <label className="modal-backdrop" htmlFor="my_modal_7">
                       Close
