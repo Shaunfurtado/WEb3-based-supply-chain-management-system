@@ -7,6 +7,8 @@ const CompleteShipment = ({ completeShipment }) => {
     index: "",
   });
   const [isScanning, setIsScanning] = useState(false);
+  const [scannedDataPlaceholder, setScannedDataPlaceholder] =
+    useState("Enter Address");
 
   const changeStatus = () => {
     completeShipment(completeShip);
@@ -16,6 +18,7 @@ const CompleteShipment = ({ completeShipment }) => {
     if (data) {
       console.log("Result of scan: ", data);
       const scannedAddress = data.text;
+      setScannedDataPlaceholder(scannedAddress);
       if (scannedAddress.length >= 42) {
         const recipient = scannedAddress.substring(0, 42);
         const index = scannedAddress.substring(42);
@@ -51,7 +54,7 @@ const CompleteShipment = ({ completeShipment }) => {
               </label>
               <input
                 type="text"
-                placeholder="Enter Address"
+                placeholder={scannedDataPlaceholder}
                 className="input input-bordered w-full max-w-xs"
                 onChange={(e) =>
                   setCompleteShip({

@@ -5,6 +5,8 @@ const GetShipment = ({ getShipment }) => {
   const [index, setIndex] = useState(0);
   const [singleShipmentData, setSingleShipmentData] = useState();
   const [isScanning, setIsScanning] = useState(false);
+  const [scannedDataPlaceholder, setScannedDataPlaceholder] =
+    useState("Enter Id");
 
   const getShipmentData = async () => {
     try {
@@ -35,10 +37,15 @@ const GetShipment = ({ getShipment }) => {
     if (data) {
       console.log("Result of scan: ", data);
       const scannedData = data.text;
-      if (scannedData.length > 42) {
+      setScannedDataPlaceholder(scannedData);
+      if (scannedData.length >= 42) {
         const remainingData = scannedData.substring(42);
         const numData = parseInt(remainingData, 10);
         if (!isNaN(numData)) {
+          // Extracting characters after 42nd position
+          const after42Characters = scannedData.substring(42);
+          console.log("Characters after 42nd position: ", after42Characters);
+
           setIndex(numData);
           setIsScanning(false);
           getShipmentData();
@@ -75,7 +82,7 @@ const GetShipment = ({ getShipment }) => {
                     <div className="form-control">
                       <input
                         type="number"
-                        placeholder="Enter Id"
+                        placeholder="Enter ID"
                         className="input input-bordered join-item"
                         onChange={(e) => setIndex(e.target.value)}
                       />
