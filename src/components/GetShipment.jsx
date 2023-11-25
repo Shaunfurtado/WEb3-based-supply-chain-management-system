@@ -185,7 +185,13 @@ const GetShipment = ({ getShipment }) => {
                     />
                     <input
                       type="text"
-                      placeholder={`Status: ${singleShipmentData.status}`}
+                      placeholder={`Status: ${
+                        singleShipmentData.status === 0
+                          ? "Pending"
+                          : singleShipmentData.status === 1
+                          ? "IN_TRANSIT"
+                          : "Delivered"
+                      }`}
                       className="input input-bordered w-full max-w-xs"
                       disabled
                     />
