@@ -41,10 +41,12 @@ const GetShipment = ({ getShipment }) => {
       if (scannedData.length >= 42) {
         const remainingData = scannedData.substring(42);
         const numData = parseInt(remainingData, 10);
+
         if (!isNaN(numData)) {
           // Extracting characters after 42nd position
           const after42Characters = scannedData.substring(42);
           console.log("Characters after 42nd position: ", after42Characters);
+          const scannedDataPlaceholder = after42Characters;
 
           setIndex(numData);
           setIsScanning(false);
@@ -77,12 +79,12 @@ const GetShipment = ({ getShipment }) => {
             <div className="card w-96 bg-neutral text-neutral-content flex items-center justify-center">
               <form onSubmit={(e) => e.preventDefault()}>
                 <div className="card-body items-center text-center">
-                  <h2 className="card-title">Get Shipment Data</h2>
+                  <h2 className="card-title">Verify/Get Shipment Data</h2>
                   <div className="join">
                     <div className="form-control">
                       <input
                         type="number"
-                        placeholder="Enter ID"
+                        placeholder={scannedDataPlaceholder}
                         className="input input-bordered join-item"
                         onChange={(e) => setIndex(e.target.value)}
                       />

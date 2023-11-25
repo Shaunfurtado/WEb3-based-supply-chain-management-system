@@ -43,13 +43,10 @@ const Navbar = () => {
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/get-shipment">Get Shipment</Link>
+                <Link to="/get-shipment">Verify/Get Shipment Data</Link>
               </li>
               <li>
                 <Link to="/table">Tracking Log</Link>
-              </li>
-              <li>
-                <Link to="/verify-product">Verify Product</Link>
               </li>
             </ul>
           </div>
@@ -63,13 +60,10 @@ const Navbar = () => {
               <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/get-shipment">Get Shipment</Link>
+              <Link to="/get-shipment">Verify/Get Shipment Data</Link>
             </li>
             <li>
               <Link to="/table">Tracking Logs</Link>
-            </li>
-            <li>
-              <Link to="/verify-product">Verify Product</Link>
             </li>
           </ul>
           <div className="dropdown dropdown-end">

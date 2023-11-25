@@ -134,7 +134,7 @@ export const getShipmentsCount = async () => {
         return shipmentsCount.toNumber();
     } catch (error) {
         console.log("Error in getShipmentsCount:", error);
-        return 0; // Return a default value or handle the error appropriately
+        return 0;
     }
 };
 
@@ -169,11 +169,9 @@ export const getShipment = async (index) => {
 
 export const TrackingContext = React.createContext();
 export const TrackingProvider = ({ children }) => {
-    // -- State
     const DappName = "Decentralized Product Tracking";
     const [currentUser, setCurrentUser] = useState("");
 
-    //-- Check if Wallet is connected
     const checkIfWalletIsConnected = async () => {
         try {
             if (!window.ethereum) return "Install Metamask";
