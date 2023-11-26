@@ -20,7 +20,9 @@ const Home = () => {
           <div className="modal" role="dialog">
             <div className="modal-box">
               <h3 className="text-lg font-bold">Hello</h3>
-              <p className="py-4">This modal works with a hidden checkbox!</p>
+              <p className="py-4">
+                Welcome to our Supply Chain Management Dapp!
+              </p>
             </div>
             <label className="modal-backdrop" htmlFor="my_modal_7">
               Close
