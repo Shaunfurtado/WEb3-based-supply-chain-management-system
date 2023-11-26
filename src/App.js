@@ -3,7 +3,6 @@ import './App.css';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Navbar, Footer, Home, Table, CreateShipment, StartShipment, CompleteShipment, TrackingLogs, Shipments, GetShipment } from './components/index';
 
-// Internal import
 import { TrackingProvider, createShipment, startShipment, completeShipment, getAllShipment, getShipment} from './components/Context/TrackingContext';
 
 export default function App() {
